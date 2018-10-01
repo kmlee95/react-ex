@@ -3,10 +3,21 @@ import TodoItem from '../TodoItem';
 
 class TodoList extends Component {
     render(){
+        const { todos } = this.props;
+        //map을 이용해 todo로 받아 값을 넣어줌.
+        const todoList = todos.map(
+            todo => (
+                <TodoItem
+                    key={todo.id}
+                    done={todo.done}>
+
+                    {todo.text}
+                </TodoItem>
+            )
+        )
         return(
             <div>
-                <TodoItem done>리액트 공부하기</TodoItem>
-                <TodoItem>컴포넌트 스타일링 해보기</TodoItem>
+                {todoList}
             </div>
         );
     }
