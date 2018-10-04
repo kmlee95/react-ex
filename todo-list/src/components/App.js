@@ -35,14 +35,32 @@ class App extends Component{
             input:''
         });
     }
-    
+    handleToggle = (id) =>{
+        const {todos} = this.state;
+        const index = todos.findIndex(todo => todo.id === id);
+
+        const toggled = {
+            ...todos[index],
+            done : !todos[index].done
+        };
+        this.setState({
+            todos: [...todos.slice(0,index), toggled, ...todos.slice(index+1, todos.length)]
+        });
+    }
+    handleRemove = (id) =>{
+        const {todos} = this.state;
+        const index = todos.findIndex(todo => todo.id === id);//어떤걸 선택했는지 index로 ..
+        this.setState({
+            todos:[ ...todos.slice(0, index), ...todos.slice(index+1, todos.length)]
+        });
+    }
     render(){
         const { input , todos } = this.state;
-        const { handleChange, handleInsert } = this; // 아래에 this.handleChange처럼 계속 반복해서 안쓰기 위해
+        const { handleChange, handleInsert, handleToggle, handleRemove } = this; // 아래에 this.handleChange처럼 계속 반복해서 안쓰기 위해
         return(
            <PageTemplate>
                <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/> 
-               <TodoList todos={todos}/>
+               <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
            </PageTemplate>
         );
     }
