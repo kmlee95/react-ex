@@ -3,7 +3,7 @@ import { Post } from 'pages';
 import { Link, Route } from 'react-router-dom';
 
 const Posts =({match}) =>{
-
+    //match 는 params를 조회하거나 서브라우트를 만들때 path 참조
     return(
         <div>
             <h3>포스트 목록</h3>
