@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { Home, About, Posts } from 'pages';
+import Menu from 'components/Menu';
 
 
 class App extends Component {
   render() {
     return (
       <div>
-        리액트 라우터를 배워봅시다.
+        <Menu />
+        <Route exact path="/" component={Home} />
+        <Route path="/about/:name?" component={About} />
+        <Route path="/posts" component={Posts} />
       </div>
     );
   }
