@@ -5,17 +5,19 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^6.2.0",
-    "eslint": "^5.14.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "mongoose": "^5.4.17"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.15.1",
+    "eslint-plugin-react": "^7.12.4",
     "nodemon": "^1.18.10"
   },
   "scripts": {
-    "start": "node src",
-    "start:dev": "nodemon --watch src/ src/index.js"
+    "start": "cross-env NODE_PATH=src node src",
+    "start:dev": "cross-env NODE_PATH=src nodemon --watch src/ src/index.js"
   }
 }
